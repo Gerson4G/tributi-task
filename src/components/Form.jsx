@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Snackbar from '@material-ui/core/Snackbar';
+
 import { data } from '../formData';
 
 const renderInput = ({type, label, id}) => {
@@ -14,6 +16,7 @@ const renderInput = ({type, label, id}) => {
     switch(type){
         case "text":
             input = <TextField
+            required
             id={id}
             label={label}
             InputProps={{
@@ -42,6 +45,32 @@ const getProgress = (page) => {
 const Form = () => {
   
     const [page, changePage] = useState(0);
+    const [openSnackbar, snackbar] = useState(false);
+
+    const validateForm = () => {
+        let validated = true;
+        switch(page){
+            case 0:
+                for(let field of data[page].fields){
+                    if(!document.getElementById(field.id).value){
+                        validated = false;
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+        return validated;
+    }
+
+    const confirmChangePage = (value) => {
+        if(validateForm()){
+            changePage(value);
+        }
+        else{
+            snackbar(true);
+        }
+    }
 
     return (
         <FormControl style={{margin: "1em"}}>
@@ -55,10 +84,20 @@ const Form = () => {
                     Back
                 </Button>
                 <div> Page {page+1}</div>
-                <Button variant="contained" color="primary" endIcon={<NavigateNextIcon />} onClick={() => changePage(page+1)} disabled={page === data.length - 1}>
+                <Button variant="contained" color="primary" endIcon={<NavigateNextIcon />} onClick={() => confirmChangePage(page+1)} disabled={(page === data.length - 1)}>
                     Next
                 </Button>
             </div>
+            <Snackbar
+                anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+                }}
+                open={openSnackbar}
+                onClose={() => snackbar(false)}
+                autoHideDuration={2000}
+                message="Please fullfil form validation before moving forward"
+            />
         </FormControl>
     );
   }

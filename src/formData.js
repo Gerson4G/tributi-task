@@ -5,7 +5,8 @@ export const data = [
         fields: [
             {type: "text", name: "First Name", label: "First Name", id: "first-name-input"},
             {type: "text", name: "Last Name", label: "Last Name", id: "last-name-input"}
-        ]
+        ],
+        validation: (fieldsFilled) => { return fieldsFilled !== data[0].fields.length }
     },
     {
         page: 1,
