@@ -19,14 +19,14 @@ Construir una interfaz gráfica en ReactJS que sea un formulario dividido en var
 Es decir, los pasos, el título, los input, etc, se puedan generar a partir de un solo Object o JSON.
 
 --------------------------------------
-Que se puede encontrar en el codigo:
+### Que se puede encontrar en el codigo:
 
-3 Paginas en el form con multiple tipos de Input
-Se usa Material-UI como framework CSS
-Se incluye un componente de Clase (Pagina final de gracias, que incluye un React Fragment. Innecesario pero demostrativo.)
-Se incluye el uso de React Hooks basico (en el Form, ya que es componente funcional. Para el Last Name, se maneja el valor y se pasa a la ultima pantalla)
-Se muestra manipulacion del DOM (para la validacion de los input)
-Form unicomponente (velocidad de desarrollo para la prueba. Cada pagina pudiese ser un componente separado y aplicar validaciones en cada componente mediante su estado si cumple o no en vez de revisar el DOM)
-Data dinamica mediante un JSON
+- 3 Paginas en el form con multiple tipos de Input
+- Se usa Material-UI como framework CSS
+- Se incluye un componente de Clase (Pagina final de gracias, que incluye un React Fragment. Innecesario pero demostrativo.)
+- Se incluye el uso de React Hooks basico (en el Form, ya que es componente funcional. Para el Last Name, se maneja el valor y se pasa a la ultima pantalla)
+- Se muestra manipulacion del DOM (para la validacion de los input)
+- Form unicomponente (velocidad de desarrollo para la prueba. Cada pagina pudiese ser un componente separado y aplicar validaciones en cada componente mediante su estado si cumple o no en vez de revisar el DOM)
+- Data dinamica mediante un JSON
 
 ### Heroku URL: https://tributi-task.herokuapp.com/
