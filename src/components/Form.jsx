@@ -9,6 +9,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import ThankYouPage from './ThankYouPage';
+
 import { data } from '../formData';
 
 const renderInput = ({type, label, id}, setName) => {
@@ -112,6 +113,7 @@ const Form = () => {
                 </Button>
             </div>
             <Snackbar
+                severity="error"
                 anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -119,7 +121,8 @@ const Form = () => {
                 open={openSnackbar}
                 onClose={() => snackbar(false)}
                 autoHideDuration={2000}
-                message="Please fullfil form validation before moving forward"
+                message='Please fullfil form validation before moving forward'
+                className="alert"
             />
         </FormControl>
     );
