@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import Typography from '@material-ui/core/Typography';
@@ -17,6 +15,7 @@ const renderInput = ({type, label, id}, setName) => {
     let input = null;
     switch(type){
         case "text":
+        case "number":
             input = <TextField
             key={id}
             required
@@ -29,13 +28,7 @@ const renderInput = ({type, label, id}, setName) => {
                     }
                 }
             }
-            InputProps={{
-                startAdornment: (
-                <InputAdornment position="start">
-                    <AccountCircle />
-                </InputAdornment>
-                ),
-            }}
+            type={type}
             />;
             break;
         case "switch":
@@ -69,14 +62,17 @@ const Form = () => {
         let validated = true;
         switch(page){
             case 0:
-            case 1:
+            case 2:
                 for(let field of data[page].fields){
                     if(!document.getElementById(field.id).value){
                         validated = false;
                     }
                 }
                 break;
-            case 2:
+            case 1:
+                validated = data[page].fields.some( field => document.getElementById(field.id).checked);
+                break;
+            case 3:
                 validated = data[page].fields.some( field => document.getElementById(field.id).checked);
                 break;
             default:
@@ -101,16 +97,16 @@ const Form = () => {
             <Typography variant="h3" gutterBottom>
                 {data[page].title}
             </Typography>
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle1" style={{textAlign: "center"}}>
                 {data[page].validationMessage}
             </Typography>
             { getInput(page, setName) }
-            <LinearProgress variant="determinate" value={getProgress(page+1)} />
-            <div style={{display: "flex"}}>
+            <LinearProgress variant="determinate" value={getProgress(page+1)} className="progress-bar"/>
+            <div className="button-container">
                 <Button variant="contained" startIcon={<NavigateNextIcon style={{transform: "rotate(180deg)"}}/>}  onClick={() => changePage(page-1)} disabled={page === 0}>
                     Back
                 </Button>
-                <div> Page {page+1}</div>
+                <div> Page {page+1} of {data.length}</div>
                 <Button variant="contained" color="primary" endIcon={<NavigateNextIcon />} onClick={() => confirmChangePage(page+1)}>
                     Next
                 </Button>
