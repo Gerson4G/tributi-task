@@ -6,21 +6,23 @@ export const data = [
             {type: "text", name: "First Name", label: "First Name", id: "first-name-input"},
             {type: "text", name: "Last Name", label: "Last Name", id: "last-name-input"}
         ],
-        validation: (fieldsFilled) => { return fieldsFilled !== data[0].fields.length }
+        validationMessage: "All fields must be filled"
     },
     {
         page: 1,
         title: "Person Favorites",
         fields: [
-            {type: "text", name: "Favorite Movie", label: "Favorite Movie", id: "movie-input"}
-        ]
+            {type: "text", name: "Favorite Movie", label: "Favorite Movie", id: "movie-input"},
+            {type: "text", name: "Favorite Car", label: "Favorite Car", id: "car-input"}
+        ],
+        validationMessage: "All fields must be filled"
     },
     {
         page: 2,
         title: "Programming Languages",
         fields: [
-            {type: "text", name: "Favorite Movie", label: "Favorite Movie", id: "movie-input"}
-        ]
+            {type: "switch", name: "Python", label: "python", id: "python-input"}
+        ],
+        validationMessage: "At least 1 language must be selected"
     }
-
 ];
