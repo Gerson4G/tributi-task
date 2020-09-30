@@ -4,7 +4,7 @@
 #
 DEPLOY_ENV=staging
 REFLECT_API_KEY=pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv
-LAST_COMMIT=`git rev-parse HEAD`
+LAST_COMMIT=`cat ./.hidden/last_commit.txt`
 if [[ -z "${DEPLOY_ENV}" ]]; then
     echo "Environment variable not set"
 else
