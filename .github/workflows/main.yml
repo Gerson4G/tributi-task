@@ -11,12 +11,15 @@ jobs:
   Reflect-regression:
     runs-on: ubuntu-latest
     steps:
+      - name: Display info
+        env:
+          TAG: login
+        run: echo "Running Reflect tests with tag `$TAG` for commit `$GITHUB_SHA`"
       - name: Run Reflect regression test
         env:
           REFLECT_API_KEY: pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv
           TAG: login
-        run: echo "Running Reflect tests with tag $TAG for commit $GITHUB_SHA" && \
-          curl \
+        run:  curl \
           -X POST \
           -H "X-API-KEY:$REFLECT_API_KEY" \
           -H "Content-Type:application/json" \
