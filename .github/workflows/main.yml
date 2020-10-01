@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run Reflect regression test
-      - run: curl \
+        run: curl \
           -X POST \
           -H "X-API-KEY:pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv" \
           -H "Content-Type:application/json" \
