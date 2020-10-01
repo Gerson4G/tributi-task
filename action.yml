@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - "master"
+  pull_request:
+    types: [ synchronize ]
+
+jobs:
+  run-staging-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Reflect regression test
+      - run: curl \
+          -X POST \
+          -H "X-API-KEY: pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv" \
+          -d "{ \
+            "gitHub": { \
+              "owner": "gerson4g", \
+              "repo": "tributi-task", \
+              "sha": "${{ github.event.pull_request.head.sha }}" \
+            } \
+          }" \
+          https://api.reflect.run/v1/tags/login/executions
