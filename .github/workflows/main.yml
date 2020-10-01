@@ -21,5 +21,5 @@ jobs:
           TAG: login
         uses: wei/curl@v1.1.1
         with:
-          args: -X POST -H "X-API-KEY:$REFLECT_API_KEY" -H "Content-Type:application/json" -d "{ \"gitHub\":{ \"owner\":\"gerson4g\", \"repo\":\"tributi-task\", \"sha\":\"$GITHUB_SHA\" } }" \
+          args: -X POST -H X-API-KEY:$REFLECT_API_KEY -H Content-Type:application/json -d "{ \"gitHub\":{ \"owner\":\"gerson4g\", \"repo\":\"tributi-task\", \"sha\":\"$GITHUB_SHA\" } }" \
               https://api.reflect.run/v1/tags/$TAG/executions
