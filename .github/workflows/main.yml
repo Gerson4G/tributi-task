@@ -19,5 +19,8 @@ jobs:
         env:
           REFLECT_API_KEY: pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv
           TAG: login
-        run:  curl -X POST -H "X-API-KEY:$REFLECT_API_KEY" -H "Content-Type:application/json" -d "{ \"gitHub\":{ \"owner\":\"gerson4g\", \"repo\":\"tributi-task\", \"sha\":\"$GITHUB_SHA\" } }'\" \
+        run:  curl -X POST \
+              -H "X-API-KEY:$REFLECT_API_KEY" \
+              -H "Content-Type:application/json" \
+              -d "{ \"gitHub\":{ \"owner\":\"gerson4g\", \"repo\":\"tributi-task\", \"sha\":\"$GITHUB_SHA\" } }\" \
               https://api.reflect.run/v1/tags/$TAG/executions
