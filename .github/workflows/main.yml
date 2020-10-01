@@ -11,17 +11,14 @@ jobs:
   Reflect-regression:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Run Reflect regression test
-        run: curl 
-          -X POST 
-          -H "X-API-KEY:pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv"
-          -H "Content-Type:application/json"
-          -d "{
-            "gitHub":{
-              "owner":"gerson4g",
-              "repo":"tributi-task",
-              "sha":"${{ github.event.pull_request.head.sha }}"
-            }
-          }"
-          https://api.reflect.run/v1/tags/login/executions
+        env:
+          REFLECT_API_KEY: pf0TsJyh9m9NPhsjzgS2G8GGu649OjJk1i5s73Bv
+          TAG: login
+        run: echo "Running Reflect tests with tag $TAG for commit $GITHUB_SHA" && \
+          curl \
+          -X POST \
+          -H "X-API-KEY:$REFLECT_API_KEY" \
+          -H "Content-Type:application/json" \
+          -d '{ "gitHub":{ "owner":"gerson4g", "repo":"tributi-task", "sha":"$GITHUB_SHA" } }' \
+          https://api.reflect.run/v1/tags/$TAG/executions
