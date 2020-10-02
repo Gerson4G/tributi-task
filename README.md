@@ -1,4 +1,4 @@
-...This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+....This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # tributi-task
 Form in React JS, as a task on interview process for Tributi application
